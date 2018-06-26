@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-// a class becomes a UI component by extending another class Component from 'react'. ReactJS instantiates this class and calls the 'render()' method to get the UI content
-class HelloWorld extends Component {
+
+let root = document.getElementById('root');
+
+setInterval(() => {
+    root.innerHTML = '<h1>This is real DOM</h1>';
+}, 1000);
+
+
+class Test extends Component {
+    state = { message: 'This is virtual DOM' };
+    constructor() {
+        super();
+        setInterval(() => {
+            this.setState({ message: 'This is virtual DOM' });
+            console.log('state changed at ', new Date().toTimeString());
+        }, 1000);
+    }
 
     render() {
-
-        let msg = 'Hello friend. Welcome to ReactJS!';
-        return <h1>{msg.toUpperCase()}</h1>;
-
+        console.log('rendering the Test component');
+        return <h1>{this.state.message}</h1>;
     }
 }
 
-let comp1 = <HelloWorld />;
-ReactDOM.render(comp1, document.getElementById('root'));
+ReactDOM.render(<Test />, document.getElementById('vdom'));
