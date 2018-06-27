@@ -1,4 +1,4 @@
-import { ADD_CONTACT, DELETE_CONTACT, FETCH_CONTACTS } from "./types";
+import { ADD_CONTACT, DELETE_CONTACT, FETCH_CONTACTS, LOAD_CONTACTS, SEARCH_CONTACTS } from "./types";
 
 const BASE_URL = 'http://localhost:4000/contacts/';
 
@@ -61,3 +61,13 @@ export const fetchContacts = () => dispatch =>
         .then(resp => resp.json())
         .then(resp => dispatch({ type: FETCH_CONTACTS, payload: resp }));
 
+
+export const loadContacts = (page = 1) => dispatch =>
+    fetch(BASE_URL + '?_page=' + page)
+        .then(resp => resp.json())
+        .then(resp => dispatch({ type: LOAD_CONTACTS, payload: resp }));
+
+export const searchContacts = (token) => dispatch =>
+    fetch(BASE_URL + '?q=' + token)
+        .then(resp => resp.json())
+        .then(resp => dispatch({ type: SEARCH_CONTACTS, payload: resp }));

@@ -15,7 +15,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "backend": "json-server --port 4000 --delay 2000 fakedata.js",
+    "backend": "json-server --port 4000 fakedata.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

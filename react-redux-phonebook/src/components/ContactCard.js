@@ -13,7 +13,7 @@ class ContactCard extends Component {
                     <img src={contact.avatar} alt={contact.name} className="img img-circle" />
                 </div>
                 <div className="col-xs-8">
-                    <h3>{contact.name}
+                    <h3>{contact.id} - {contact.name}
                         <span
                             onClick={() => {
                                 if (window.confirm('Are you sure to delete this?')) {
